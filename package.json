@@ -1,0 +1,23 @@
+{
+  "name": "javascript-katas",
+  "version": "1.0.0",
+  "description": "Solutions of katas available on codewars.com - but with unit tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wojcirej/javascript-katas.git"
+  },
+  "author": "Wojciech Bal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wojcirej/javascript-katas/issues"
+  },
+  "homepage": "https://github.com/Wojcirej/javascript-katas#readme",
+  "devDependencies": {
+    "jasmine": "^3.3.1",
+    "jasmine-custom-reporters": "^1.2.1"
+  }
+}
