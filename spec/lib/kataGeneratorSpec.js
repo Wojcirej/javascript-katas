@@ -1,20 +1,6 @@
 const subject = require('./../../lib/kataGenerator');
 const fs = require('fs');
 
-function testExample(description, path) {
-
-  it(description, function() {
-    var existence;
-    if (fs.existsSync(path)) {
-      existence = true;
-    }
-    else {
-      existence = false;
-    };
-    expect(existence).toBe(true);
-  });
-};
-
 describe("kataGenerator", function() {
   const kataName = "testKata";
   const rootDirectoryPath = "katas/" + kataName;
@@ -41,8 +27,38 @@ describe("kataGenerator", function() {
     };
   });
 
+  function testExample(description, path) {
+
+    it(description, function() {
+      var existence;
+      if (fs.existsSync(path)) {
+        existence = true;
+      }
+      else {
+        existence = false;
+      };
+      expect(existence).toBe(true);
+    });
+  };
+
   testExample("creates 'testKata' directory in 'katas/' directory", rootDirectoryPath);
   testExample("creates 'testKata.js' file in 'katas/testKata' directory", kataDefinitionFilePath);
   testExample("creates 'README.md' file in 'katas/testKata' directory", readmeFilePath);
   testExample("creates 'testKataSpec.js' file in 'spec/katas/' directory", kataSpecFilePath);
+});
+
+describe("humanizeKataName", function() {
+
+  function testExample(kataName, description, expectedResult) {
+
+    describe(description, function() {
+
+      it("returns '" + expectedResult + "'", function() {
+        expect(subject.humanizeKataName(kataName)).toEqual(expectedResult);
+      });
+    });
+  };
+
+  testExample("testKata", "when kataName = 'testKata'", "Test kata");
+  testExample("testTestTest", "when kataName = 'testTestTest'", "Test test test");
 });
