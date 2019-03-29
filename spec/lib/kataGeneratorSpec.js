@@ -62,3 +62,19 @@ describe("humanizeKataName", function() {
   testExample("testKata", "when kataName = 'testKata'", "Test kata");
   testExample("testTestTest", "when kataName = 'testTestTest'", "Test test test");
 });
+
+describe("formatParamsForDescription", function() {
+
+  function testExample(params, description, expectedResult) {
+
+    describe(description, function() {
+
+      it("returns '" + expectedResult + "'", function() {
+        expect(subject.formatParamsForDescription(params)).toEqual(expectedResult);
+      });
+    });
+  };
+
+  testExample(["param"], "when params = '[param]'", "when param = '\" + param + \"'");
+  testExample(["param1", "param2"], "when params = '[param1, param2]'", "when param1 = '\" + param1 + \"', when param2 = '\" + param2 + \"'");
+})
