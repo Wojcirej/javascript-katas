@@ -13,15 +13,9 @@ describe("kataGenerator", function() {
   });
 
   afterEach(function() {
-    fs.unlink(kataDefinitionFilePath, function(err) {
-      if (err) throw err;
-    });
-    fs.unlink(readmeFilePath, function(err) {
-      if (err) throw err;
-    });
-    fs.unlink(kataSpecFilePath, function(err) {
-      if (err) throw err;
-    });
+    fs.unlinkSync(kataDefinitionFilePath);
+    fs.unlinkSync(readmeFilePath);
+    fs.unlinkSync(kataSpecFilePath);
     if (fs.existsSync(rootDirectoryPath)) {
       fs.rmdirSync(rootDirectoryPath);
     };
@@ -77,4 +71,4 @@ describe("formatParamsForDescription", function() {
 
   testExample(["param"], "when params = '[param]'", "when param = '\" + param + \"'");
   testExample(["param1", "param2"], "when params = '[param1, param2]'", "when param1 = '\" + param1 + \"', when param2 = '\" + param2 + \"'");
-})
+});
